@@ -1,0 +1,30 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <div class="container">
+      <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png' , size: '130x130' %></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+
+        <% if admin_signed_in? %>
+          <li><i class="fas fa-list" style= "color:orange;"></i><%= link_to ' 投稿一覧　' , admin_items_path, style:"color:orange;"%></li>
+          <li><i class="fas fa-user-secret" style= "color:orange;"></i><%= link_to ' 会員一覧　' ,admin_customers_path, style:"color:orange;" %></li>
+          <li><i class="fas fa-brain" style= "color:orange;"></i><%= link_to ' 投稿履歴一覧　' ,admin_orders_path, style:"color:orange;" %></li>
+          <li><i class="fas fa-dna" style= "color:orange;"></i><%= link_to ' ジャンル一覧　' , admin_genres_path, style:"color:orange;" %></li>
+          <li><i class="fas fa-sign-out-alt" style= "color:orange;"></i><%= link_to ' ログアウト　' , destroy_admin_session_path, method: :delete, style:"color:orange;" %></li>
+        <% else %>
+
+          <li><i class="fas fa-birthday-cake" style= "color:orange;"></i><%= link_to ' About　' ,about_path, style:"color:orange;" %></li>
+          <li><i class="fas fa-list" style= "color:orange;"></i><%= link_to ' 会員一覧　' ,items_path, style:"color:orange;" %></li>
+          <li><i class="fas fa-address-card" style= "color:orange;"></i><%= link_to ' 新規登録　' ,new_customer_registration_path,style:"color:orange;"%></li>
+          <li><i class="fas fa-sign-out-alt" style= "color:orange;"></i><%= link_to ' ログイン　' , new_admin_session_path, style:"color:orange;" %></li>
+        <% end %>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

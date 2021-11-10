@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container">
+      <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png' , size: '200x200' %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+
+        <% if customer_signed_in? %>
+          <div class="text-center" style= "color:gray; padding:30px;">
+            ようこそ
+            <%= current_customer.last_name %>
+            さん!
+          </div>
+          <li><i class="fas fa-user" style= "color:gray;"></i><%= link_to 'マイページ　' ,customers_my_page_path , style:"color:gray;"%></li>
+
+          <li><i class="fas fa-list" style= "color:gray;"></i><%= link_to ' 投稿一覧　' , items_path, style:"color:gray;" %></li>
+
+          <li><i class="fas fa-shopping-cart" style= "color:gray;"></i><%= link_to ' About　' , cart_items_path, style:"color:gray;"%></li>
+
+          <li><i class="fas fa-sign-out-alt" style= "color:gray;"></i><%= link_to ' ログアウト　' , destroy_customer_session_path, method: :delete, style:"color:gray;"%></li>
+
+        <% else %>
+
+          <li><i class="fas fa-birthday-cake" style= "color:gray;"></i><%= link_to ' About　' , about_path, style:"color:gray;" %></li>
+
+          <li><i class="fas fa-list" style= "color:gray;"></i><%= link_to ' 投稿一覧　' , items_path, style:"color:gray;" %></li>
+
+          <li><i class="fas fa-address-card" style= "color:gray;"></i><%= link_to ' 新規登録　' ,new_customer_registration_path, style:"color:gray;" %></li>
+
+          <li><i class="fas fa-sign-out-alt" style= "color:gray;"></i><%= link_to ' ログイン　' ,new_customer_session_path, style:"color:gray;" %></li>
+
+        <% end %>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
