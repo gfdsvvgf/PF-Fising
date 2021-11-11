@@ -2,11 +2,8 @@ Rails.application.routes.draw do
   namespace :customer do
     get 'homes/top'
     root to: "homes#top"
-    get 'todolists/new'
+    resources :todolists
   end
-  
-  
-  resources :Todolists, only: [:index, :show]
   
   # 顧客用
   # URL /customers/sign_in ...

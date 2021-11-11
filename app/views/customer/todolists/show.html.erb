@@ -1,0 +1,45 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>投稿詳細</h2>
+  		<table class='table'>
+  		  <tr>
+  		    <td><%= link_to user_path(@book.user) do %>
+            <%= attachment_image_tag(@book.user, :profile_image, :fill, 100, 100, fallback: "no-image-icon.jpg") %><br>
+            <%= @book.user.name %>
+            <% end %>
+          </td>
+          <td><%= link_to @book.title, book_path(@book) %></td>
+          <td><%= @book.body %></td>
+          <td id="favorite_buttons_<%= @book.id %>">
+            <%= render "favorites/favorites", book: @book %>
+          </td>  
+          <td>コメント件数：<%= @book.post_comments.count %></td>
+          <% if @user.id == current_user.id %>
+            <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
+            <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
+          <% end %>
+        </tr>
+      </table>
+      <div>
+        <% if @comments %>
+          <div class="commentsArea">
+            <%= render partial: "post_comments/comment", locals: { comments: @comments }%>
+          </div>
+        <% else %>
+          <p>コメントはまだありません</p>
+        <% end %>
+
+        <div class="bottomInput">
+          <%= form_with(model: [@book, @comment], id: "new-comment") do |f| %>
+            <%= f.text_area :comment, class: "inputComment" %>
+            <%= f.submit "コメントする", class: "submitComment" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

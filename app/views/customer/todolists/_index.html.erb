@@ -1,0 +1,25 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% lists.each do |list| %>
+      <tr>
+        <td><%= link_to customer_path(list.customer) do %><%= attachment_image_tag(list.customer, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %><% end %></td>
+        <td><%= link_to list.title, list_path(list), class: "list_#{list.id}" %></td>
+        <td><%= list.body %></td>
+        <td id="favorite_buttons_<%= list.id %>">
+          <%= #render "favorites/favorites", book: book %>
+        </td>  
+        <td>
+          <%= #link_to "#{book.post_comments.count} コメント", book_path(book.id) %>
+        </td>
+      </tr>  
+    <% end %>
+  </tbody>
+</table>

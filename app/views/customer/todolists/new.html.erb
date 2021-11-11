@@ -1,2 +1,11 @@
-<h1>Customer::Todolists#new</h1>
-<p>Find me in app/views/customer/todolists/new.html.erb</p>
+<h1>新規投稿</h1>
+<!-- form_with部分 -->
+<%= form_with model: @list, url:'/todolists', local:true do |f| %>
+  <%= f.label :画像 %><br />
+  <%= f.file_field :image_id, class: "image" %>
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+  <%= f.submit '投稿' %>
+<% end %>
