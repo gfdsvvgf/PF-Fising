@@ -10,9 +10,10 @@
         <% if customer_signed_in? %>
           <div class="text-center" style= "color:gray; padding:30px;">
             ようこそ
-            <%= current_customer.last_name %>
+            <%= current_customer.name %>
             さん!
           </div>
+          <!--userがログイン状態の場合-->
           <li><i class="fas fa-user" style= "color:gray;"></i><%= link_to 'マイページ　' ,, style:"color:gray;"%></li>
 
           <li><i class="fas fa-list" style= "color:gray;"></i><%= link_to ' 投稿一覧　' , customer_todolists_path, style:"color:gray;" %></li>
@@ -22,8 +23,8 @@
           <li><i class="fas fa-sign-out-alt" style= "color:gray;"></i><%= link_to ' ログアウト　' , destroy_customer_session_path, method: :delete, style:"color:gray;"%></li>
 
         <% else %>
-
-          <li><i class="fas fa-birthday-cake" style= "color:gray;"></i><%= link_to ' About　' , about_path, style:"color:gray;" %></li>
+          <!--userが未ログイン状態の場合もしくは未会員だった場合-->
+          <li><i class="fas fa-birthday-cake" style= "color:gray;"></i><%= link_to ' About　' , customer_about_path, style:"color:gray;" %></li>
 
           <li><i class="fas fa-list" style= "color:gray;"></i><%= link_to ' 投稿一覧　' , customer_todolists, style:"color:gray;" %></li>
 

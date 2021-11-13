@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   namespace :customer do
     get 'homes/top'
     root to: "homes#top"
+    get "/about" => "homes#about"
     resources :todolists
+    resources :customers
   end
   
   # 顧客用
