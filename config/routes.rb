@@ -3,8 +3,15 @@ Rails.application.routes.draw do
     get 'homes/top'
     root to: "homes#top"
     get "/about" => "homes#about"
-    resources :todolists
-    resources :customers
+    resources :users,only: [:show,:index,:edit,:update] do
+      resources :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end  
+    resources :todolists do
+      resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
+    end
   end
   
   # 顧客用
