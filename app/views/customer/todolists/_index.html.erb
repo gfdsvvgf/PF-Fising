@@ -14,10 +14,10 @@
         <td><%= link_to list.title, list_path(list), class: "list_#{list.id}" %></td>
         <td><%= list.body %></td>
         <td id="favorite_buttons_<%= list.id %>">
-          <%= #render "favorites/favorites", book: book %>
+          <%= render "favorites/favorites", list: list %>
         </td>  
         <td>
-          <%= #link_to "#{book.post_comments.count} コメント", book_path(book.id) %>
+          <%= link_to "#{list.post_comments.count} コメント", customer_todolists_path(list.id) %>
         </td>
       </tr>  
     <% end %>

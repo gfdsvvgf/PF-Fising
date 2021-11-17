@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     root to: "homes#top"
     get "/about" => "homes#about"
-    resources :users,only: [:show,:index,:edit,:update] do
+    resources :customers,only: [:show,:index,:edit,:update] do
       resources :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
