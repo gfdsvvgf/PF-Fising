@@ -1,0 +1,36 @@
+<div class="container item-index">
+    <div class="row justify-content-center mt-4">
+      <div class="col-10 row justify-content-between">
+              <p class="mt-4 fs-2 bg-light col-2 text-center">投稿一覧</p>
+        <div class="fs-2 col-2">
+             <%= link_to "", new_admin_list_path, class:"far fa-plus-square", :style => "color: black;" %>
+        </div>
+      </div>
+    </div>
+        <div class="row justify-content-center mt-3">
+          <div class="col-10">
+            <table class="table table-hover">
+              <thead class="bg-light">
+                    <tr>
+                      <th>投稿ID</th>
+                      <th>題名</th>
+                      <th>ジャンル</th>
+                    </tr>
+              </thead>
+                <tbody>
+                  <% @items.each do |item| %>
+                    <tr>
+                      <td><%= item.id %></td>
+                      <td><%= link_to item.name, admin_item_path(item) %></td>
+                      <td><%= item.genre.name %></td>
+                        <% end %>
+                    </tr>
+                  <% end %>
+                </tbody>
+        </table>
+      </div>
+    </div>
+    　<div class="mx-auto" style="width: 200px;">
+      <h4><%= paginate @lists %></h4>
+    </div>
+  </div>

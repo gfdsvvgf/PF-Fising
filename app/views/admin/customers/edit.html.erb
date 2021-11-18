@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row mx-auto">
+    <h2><span class="badge badge-secondary"><%= @customer.full_name %>様の会員編集</span></h2>
+  </div>
+
+  <%= form_with model: @customer, url: admin_customer_path(@customer), local:true do |f| %>
+
+    <div class="mb-3 row">
+      <%= f.label :id, "会員ID", class:"col-sm-3 col-form-label" %>
+      <%= @customer.id %>
+    </div>
+    <div class="mb-3 row">
+      <%= f.label :"氏名", class:"col-sm-3 col-form-label" %>
+    </div>
+    <div class="mb-3 row">
+      <%= f.label :"メールアドレス", class:"col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.text_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <%= f.label :"会員ステータス", class:"col-sm-3 col-form-label" %>
+      <div class="col-sm-1">
+        <%= f.radio_button :is_deleted, false, class:"form-check-input" %>
+        <%= f.label :is_deleted, '有効', value: false, class:"form-check-label" %>
+      </div>
+      <div class="col-sm-1">
+        <%= f.radio_button :is_deleted, true, class:"form-check-input" %>
+        <%= f.label :is_deleted, "退会", value: true, class:"form-check-label" %>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-6">
+        <%= f.submit "変更を保存" ,class:"btn btn-success" %>
+        
+      </div>
+    </div>
+
+  <% end %>
+</div>
