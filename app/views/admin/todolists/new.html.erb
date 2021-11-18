@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <p class="mt-4 fs-2 bg-light col-2 text-center">投稿新規登録</p>
+  </div>
+  <div class="row">
+    <div class="col offset-2">
+      <%= form_with model: @list, url:admin_list_path, local:true do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr class="mb-3">
+              <td class="text-center "><%= f.label :image, "投稿画像" %></td>
+              <td><%= f.attachment_field :image %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :name, "題名" %></td>
+              <td><%= f.text_field :name, size: 30, placeholder: "題名" %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :introduction, "投稿詳細" %></td>
+              <td><%= f.text_area :introduction, placeholder: "ここに詳細を記述します" %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :genre, "ジャンル" %></td>
+              <td><%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "-- 選択してください --") %></td>
+            </tr>
+            
+            <tr>
+              <td></td>
+              <td><%= f.submit '新規登録', class: "btn btn-outline-dark mb-3 offset-1" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
