@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <div class="container">
       <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.png' , size: '100x100' %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,13 +18,13 @@
 
           <li><i class="fas fa-list" style= "color:gray;"></i><%= link_to ' 投稿一覧　' , customer_todolists_path, style:"color:gray;" %></li>
 
-          <li><i class="fas fa-shopping-cart" style= "color:gray;"></i><%= link_to ' About　' , customer_about_path, style:"color:gray;"%></li>
+          <li><i class="fas fa-vest-patches" style= "color:gray;"></i><%= link_to ' About　' , customer_about_path, style:"color:gray;"%></li>
 
           <li><i class="fas fa-sign-out-alt" style= "color:gray;"></i><%= link_to ' ログアウト　' , destroy_customer_session_path, method: :delete, style:"color:gray;"%></li>
 
         <% else %>
           <!--userが未ログイン状態の場合もしくは未会員だった場合-->
-          <li><i class="fas fa-birthday-cake" style= "color:gray;"></i><%= link_to ' About　' , customer_about_path, style:"color:gray;" %></li>
+          <li><i class="fas fa-vest-patches" style= "color:gray;"></i><%= link_to ' About　' , customer_about_path, style:"color:gray;" %></li>
 
           <li><i class="fas fa-list" style= "color:gray;"></i><%= link_to ' 投稿一覧　' , customer_todolists_path, style:"color:gray;" %></li>
 

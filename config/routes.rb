@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+
+  root "homes#top"
   namespace :customer do
     get 'homes/top'
-    root to: "homes#top"
     get "/about" => "homes#about"
     resources :customers,only: [:show,:index,:edit,:update] do
       resources :relationships, only: [:create, :destroy]
