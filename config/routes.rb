@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   root "homes#top"
+  get "/about" => "homes#about"
+  #---customer側で指定したいルーティング---
   namespace :customer do
-    get 'homes/top'
-    get "/about" => "homes#about"
     resources :customers,only: [:show,:index,:edit,:update] do
       resources :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
   end
-  
+  #---------------------------------------
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords,], controllers: {
@@ -28,12 +28,14 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  #---admin側で指定したいルーティング---
   namespace :admin do
   get "homes/top" => "homes#top"
    resources :lists
    resources :genres
    resources :customers
   end
-
+  #-------------------------------------
 
 end
