@@ -3,15 +3,15 @@ class Customer::CustomersController < ApplicationController
   before_action :ensure_correct_customer, only: [:update]
 
   def show
-    @user = Customer.find(params[:id])
-    @lists = @customer.lists
+    @customer = Customer.find(params[:id])
+    @lists = @customer&.lists
     @list = List.new
   end
 
   def index
     @users = Customer.all
     @list = List.new
-  end  
+  end
 
   def edit
     @user = Customer.find(params[:id])
@@ -38,7 +38,7 @@ class Customer::CustomersController < ApplicationController
     @users = customer.follower_customer.page(params[:page]).per(3).reverse_order
   end
   #---------------------------
-  
+
 
   private
   #customerのparams設定

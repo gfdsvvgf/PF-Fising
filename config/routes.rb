@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root "homes#top"
   get "/about" => "homes#about"
+  get '/search', to: 'searchs#search'
   #---customer側で指定したいルーティング---
   namespace :customer do
     resources :customers,only: [:show,:index,:edit,:update] do

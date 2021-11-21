@@ -1,33 +1,34 @@
 class Customer::TodolistsController < ApplicationController
-  #before_action :authenticate_user!
+  #ログインしていない場合にログインページにリダイレクトさせるヘルパーメソッド
+  #before_action :authenticate_customer!
   def new
     @list = List.new
   end
-  
-  
+
+
   def index
     @lists = List.all
     @list = List.new
   end
-  
+
   def edit
 　  @list = List.find(params[:id])
 　  if @list.user.id != current_customer.id
     redirect_to customer_todolists_path
-    
+
   end
-  
+
   def show
     @new_list = List.new
     @list = List.find(params[:id])
     @user = @list.customer
     @comment = PostComment.new
     @comments = @lists.post_comments
-  end  
-  
-  
-  
-  
+  end
+
+
+
+
   def update
     @list = List.find(params[:id])
     if @list.update(list_params)
@@ -35,10 +36,10 @@ class Customer::TodolistsController < ApplicationController
     else
       render "edit"
     end
-    
+
   end
-  
-  
+
+
   def create
     # データを新規登録
     @list = List.new(list_params)
@@ -52,18 +53,18 @@ class Customer::TodolistsController < ApplicationController
       render 'index'
     end
   end
-  
+
   def destroy
     @list = List.find(params[:id])
     @list.destroy
     redirect_to customer_todolists_path
   end
-  
-  
+
+
   private
   # ストロングパラメータの設定
   def list_params
     params.require(:list).permit(:title, :body, :image_id)
-  end  
-  
+  end
+
 end
