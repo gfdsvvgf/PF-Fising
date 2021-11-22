@@ -9,33 +9,33 @@ class Customer::CustomersController < ApplicationController
   end
 
   def index
-    @users = Customer.all
+    @customers = Customer.all
     @list = List.new
   end
 
   def edit
-    @user = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
     if @customer.id != current_customer.id
     redirect_to customer_customer_path(current_user)
     end
   end
 
   def update
-    if @user.update(customer_params)
-      redirect_to customer_customer_path(@user.id), notice: "You have updated user successfully."
+    if @customer.update(customer_params)
+      redirect_to customer_customer_path(@customer.id), notice: "You have updated user successfully."
     else
       render "edit"
     end
   end
   #---フォロー機能のメソッド---
   def follows
-    @user = Customer.find(params[:id])
-    @users = customer.following_customer.page(params[:page]).per(3).reverse_order
+    @customer = Customer.find(params[:id])
+    @customers = customer.following_customer.page(params[:page]).per(3).reverse_order
   end
 
   def followers
-    @user = Customer.find(params[:id])
-    @users = customer.follower_customer.page(params[:page]).per(3).reverse_order
+    @customer = Customer.find(params[:id])
+    @customers = customer.follower_customer.page(params[:page]).per(3).reverse_order
   end
   #---------------------------
 
@@ -48,7 +48,7 @@ class Customer::CustomersController < ApplicationController
   #ユーザーと投稿を紐付けるメソッド
   def ensure_correct_user
     @user = Customer.find(params[:id])
-    unless @user == current_customer
+    unless @customer == current_customer
       redirect_to customer_customer_path(current_user)
     end
   end
