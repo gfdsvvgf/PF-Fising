@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   get '/search', to: 'searchs#search'
   #---customer側で指定したいルーティング---
   namespace :customer do
+    get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
+    patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_customer'
+    put 'withdraw/:name' => 'customers#withdraw'
     resources :customers,only: [:show,:index,:edit,:update] do
       resources :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
-    end  
+    end
     resources :todolists do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
@@ -29,11 +32,11 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   #---admin側で指定したいルーティング---
   namespace :admin do
   get "homes/top" => "homes#top"
-   resources :lists
+   resources :todolists
    resources :genres
    resources :customers
   end

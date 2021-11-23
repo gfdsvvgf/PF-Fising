@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+      <tr>
+        <th>ジャンル</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% genres.each do |genre| %>
+    <tr>  
+      <td><%= genre.name %></td>
+      <td><%= link_to '編集',edit_admin_genre_path(genre.id),class: "btn btn-success" %></td>
+    </tr>  
+    <% end %>
+  </tbody>
+</table>

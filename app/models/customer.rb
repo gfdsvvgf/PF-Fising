@@ -20,19 +20,19 @@ class Customer < ApplicationRecord
     length: { maximum: 50 }
   #-----------------------------
   #----フォロー機能設定---------
-  def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
+  def follow(other_customer)
+    unless self == other_customer
+      self.relationships.find_or_create_by(follow_id: other_customer.id)
     end
   end
 
-  def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
+  def unfollow(other_customer)
+    relationship = self.relationships.find_by(follow_id: other_customer.id)
     relationship.destroy if relationship
   end
 
-  def following?(other_user)
-    self.followings.include?(other_user)
+  def following?(other_customer)
+    self.followings.include?(other_customer)
   end
   #-----------------------------
 end

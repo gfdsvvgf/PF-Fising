@@ -1,15 +1,16 @@
+<%#-----管理者側の新規投稿画面-----%>
 <div class="container">
   <div class="row">
     <p class="mt-4 fs-2 bg-light col-2 text-center">投稿新規登録</p>
   </div>
   <div class="row">
     <div class="col offset-2">
-      <%= form_with model: @list, url:admin_list_path, local:true do |f| %>
+      <%= form_with model: @list, url:admin_todolists_path, local:true do |f| %>
         <table class="table table-borderless">
           <tbody>
             <tr class="mb-3">
               <td class="text-center "><%= f.label :image, "投稿画像" %></td>
-              <td><%= f.attachment_field :image %></td>
+              <td><%= f.file_field :image_id, class: "image" %></td>
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :name, "題名" %></td>

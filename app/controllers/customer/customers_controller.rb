@@ -16,7 +16,7 @@ class Customer::CustomersController < ApplicationController
   def edit
     @customer = Customer.find(params[:id])
     if @customer.id != current_customer.id
-    redirect_to customer_customer_path(current_user)
+    redirect_to customer_customer_path(current_customer)
     end
   end
 
@@ -46,10 +46,10 @@ class Customer::CustomersController < ApplicationController
     params.require(:customer).permit(:name, :introduction, :profile_image)
   end
   #ユーザーと投稿を紐付けるメソッド
-  def ensure_correct_user
-    @user = Customer.find(params[:id])
+  def ensure_correct_customer
+    @customer = Customer.find(params[:id])
     unless @customer == current_customer
-      redirect_to customer_customer_path(current_user)
+      redirect_to customer_customer_path(current_customer)
     end
   end
 end

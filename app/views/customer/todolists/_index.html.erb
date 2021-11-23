@@ -3,6 +3,7 @@
     <tr>
       <th></th>
       <th>Title</th>
+      <th>genre</th>
       <th>Opinion</th>
       <th colspan="3"></th>
     </tr>
@@ -12,14 +13,15 @@
       <tr>
         <td><%= link_to customer_customer_path(list.customer) do %><%= attachment_image_tag(list.customer, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %><% end %></td>
         <td><%= link_to list.title, list_path(list), class: "list_#{list.id}" %></td>
+        <td><%= list.genre %></td>
         <td><%= list.body %></td>
         <td id="favorite_buttons_<%= list.id %>">
           <%= render "favorites/favorites", list: list %>
-        </td>  
+        </td>
         <td>
           <%= link_to "#{list.post_comments.count} コメント", customer_todolists_path(list.id) %>
         </td>
-      </tr>  
+      </tr>
     <% end %>
   </tbody>
 </table>

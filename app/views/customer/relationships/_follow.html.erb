@@ -1,12 +1,12 @@
-<% unless current_user == user %>
-  <% if current_user.following?(user) %>
-    <%= form_with(model:[current_user,current_user.relationships.find_by(follow_id: user.id)], method: :delete, local:true ) do |f| %>
-      <%= f.hidden_field :follow_id, :value =>user.id %>
+<% unless current_customer == customer %>
+  <% if current_customer.following?(customer) %>
+    <%= form_with(url: customer_customer_relationship_path(customer), method: :delete, local:true ) do |f| %>
+      <%= f.hidden_field :follow_id, :value =>customer.id %>
       <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
     <% end %>
   <% else %>
-    <%= form_with(model:[current_user,current_user.relationships.build], local:true ) do |f| %>
-      <%= f.hidden_field :follow_id, :value =>user.id %>
+    <%= form_with(url: customer_customer_relationships_path(customer) , local:true ) do |f| %>
+      <%= f.hidden_field :follow_id, :value =>customer.id %>
       <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
     <% end %>
   <% end %>

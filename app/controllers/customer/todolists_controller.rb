@@ -1,10 +1,6 @@
 class Customer::TodolistsController < ApplicationController
   #ログインしていない場合にログインページにリダイレクトさせるヘルパーメソッド
-  #before_action :authenticate_customer!
-  def new
-    @list = List.new
-  end
-
+  before_action :authenticate_customer!
 
   def index
     @lists = List.all
@@ -13,15 +9,14 @@ class Customer::TodolistsController < ApplicationController
 
   def edit
 　  @list = List.find(params[:id])
-　  if @list.user.id != current_customer.id
+　  if @list.customer.id != current_customer.id
     redirect_to customer_todolists_path
-
   end
 
   def show
     @new_list = List.new
     @list = List.find(params[:id])
-    @user = @list.customer
+    @customer = @list.customer
     @comment = PostComment.new
     @comments = @lists.post_comments
   end
@@ -45,6 +40,7 @@ class Customer::TodolistsController < ApplicationController
     @list = List.new(list_params)
     @list.customer_id = current_customer.id
     # データをデータベースに保存するため
+
     if @list.save
      redirect_to customer_todolist_path(@list.id), notice: "You have created list successfully."
     else

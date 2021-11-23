@@ -3,7 +3,7 @@
       <div class="col-10 row justify-content-between">
               <p class="mt-4 fs-2 bg-light col-2 text-center">投稿一覧</p>
         <div class="fs-2 col-2">
-             <%= link_to "", new_admin_list_path, class:"far fa-plus-square", :style => "color: black;" %>
+             <%= link_to "", new_admin_todolist_path, class:"far fa-plus-square", :style => "color: black;" %>
         </div>
       </div>
     </div>
@@ -18,19 +18,18 @@
                     </tr>
               </thead>
                 <tbody>
-                  <% @items.each do |item| %>
+                  <% @lists.each do |list| %>
                     <tr>
-                      <td><%= item.id %></td>
-                      <td><%= link_to item.name, admin_item_path(item) %></td>
-                      <td><%= item.genre.name %></td>
-                        <% end %>
+                      <td><%= list.id %></td>
+                      <td><%= link_to list.name, admin_todolists_path(list) %></td>
+                      <td><%= list.genre.name %></td>
                     </tr>
                   <% end %>
                 </tbody>
-        </table>
-      </div>
-    </div>
-    　<div class="mx-auto" style="width: 200px;">
+            </table>
+          </div>
+        </div>
+    <div class="mx-auto" style="width: 200px;">
       <h4><%= paginate @lists %></h4>
     </div>
-  </div>
+</div>

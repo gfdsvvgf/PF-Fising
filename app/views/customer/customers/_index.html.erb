@@ -8,14 +8,14 @@
     </tr>
   </thead>
   <tbody>
-    <% users.each do |user| %>
+    <% customers.each do |customer| %>
       <tr>
-        <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
-        <td><%= user.name %></td>
-        <td>フォロー数: <%= user.followings.count %></td>
-        <td>フォロワー数: <%= user.followers.count %></td>
-        <td><%= render "relationships/follow", user: user %></td>
-        <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
+        <td><%= attachment_image_tag(customer, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+        <td><%= customer.name %></td>
+        <td>フォロー数: <%= customer.followings.count %></td>
+        <td>フォロワー数: <%= customer.followers.count %></td>
+        <td><%= render "customer/relationships/follow", customer: customer %></td>
+        <td><%= link_to 'Show', customer_customers_path(customer), class: "customer_#{customer.id}" %></td>
 　  　</tr>
     <% end %>
   </tbody>
