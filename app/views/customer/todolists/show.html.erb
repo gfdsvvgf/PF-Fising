@@ -8,17 +8,17 @@
   		<table class='table'>
   		  <tr>
   		    <td><%= link_to customer_customer_path(@list.customer) do %>
-            <%= attachment_image_tag(@list.customer, :profile_image, :fill, 100, 100, fallback: "no-image-icon.jpg") %><br>
+            <%= attachment_image_tag(@list.customer, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %><br>
             <%= @list.customer.name %>
             <% end %>
           </td>
           <td><%= link_to @list.title, customer_todolist_path(@list) %></td>
           <td><%= @list.body %></td>
           <td id="favorite_buttons_<%= @list.id %>">
-            <%= render "favorites/favorites", list: @list %>
+            <%= render "customer/favorites/favorites", list: @list %>
           </td>
           <td>コメント件数：<%= @list.post_comments.count %></td>
-          <% if @customer.id == current_user.id %>
+          <% if @customer.id == current_customer.id %>
             <td><%= link_to 'Edit', edit_customer_todolist_path(@list), class: "btn btn-sm btn-success edit_customer_todolist_#{@list.id}" %></td>
             <td><%= link_to 'Destroy', customer_todolist_path(@list), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_customer_todolist_#{@list.id}"%></td>
           <% end %>
@@ -27,14 +27,14 @@
       <div>
         <% if @comments %>
           <div class="commentsArea">
-            <%= render partial: "post_comments/comment", locals: { comments: @comments }%>
+            <%= render partial: "customer/post_comments/comment", locals: { comments: @comments }%>
           </div>
         <% else %>
           <p>コメントはまだありません</p>
         <% end %>
 
         <div class="bottomInput">
-          <%= form_with(model: [@list, @comment], id: "new-comment") do |f| %>
+          <%= form_with(model: [@list, @comment], url:customer_todolist_post_comments_path ,id: "new-comment") do |f| %>
             <%= f.text_area :comment, class: "inputComment" %>
             <%= f.submit "コメントする", class: "submitComment" %>
           <% end %>

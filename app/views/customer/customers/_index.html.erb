@@ -15,7 +15,7 @@
         <td>フォロー数: <%= customer.followings.count %></td>
         <td>フォロワー数: <%= customer.followers.count %></td>
         <td><%= render "customer/relationships/follow", customer: customer %></td>
-        <td><%= link_to 'Show', customer_customers_path(customer), class: "customer_#{customer.id}" %></td>
+        <td><%= link_to 'Show', customer_customer_path(customer), class: "customer_customers#{customer.id}" %></td>
 　  　</tr>
     <% end %>
   </tbody>

@@ -1,11 +1,16 @@
 class HomesController < ApplicationController
-  
+
   def top
-    
-  end  
-  
+    @lists = List.all
+    @genres = Genre.all
+  end
+
   def about
-  end  
+  end
+  
+  
+  
+  #------退会機能のメソッド------
   def unsubscribe
     @customer = Customer.find_by(name: params[:name])
   end
@@ -16,4 +21,5 @@ class HomesController < ApplicationController
     reset_session
     redirect_to root_path
   end
+  #-----------------------------
 end

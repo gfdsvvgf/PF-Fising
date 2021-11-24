@@ -18,7 +18,7 @@ class Customer::TodolistsController < ApplicationController
     @list = List.find(params[:id])
     @customer = @list.customer
     @comment = PostComment.new
-    @comments = @lists.post_comments
+    @comments = @list.post_comments
   end
 
 
@@ -41,7 +41,7 @@ class Customer::TodolistsController < ApplicationController
     @list.customer_id = current_customer.id
     # データをデータベースに保存するため
 
-    if @list.save
+    if @list.save!
      redirect_to customer_todolist_path(@list.id), notice: "You have created list successfully."
     else
       @lists = List.all
@@ -60,7 +60,7 @@ class Customer::TodolistsController < ApplicationController
   private
   # ストロングパラメータの設定
   def list_params
-    params.require(:list).permit(:title, :body, :image_id)
+    params.require(:list).permit(:title, :body, :image_id,:genre_id)
   end
 
 end

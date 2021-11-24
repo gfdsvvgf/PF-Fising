@@ -20,7 +20,7 @@
 
 <div class='row'>
   <% if customer == current_customer %>
-     <%= link_to '',edit_customer_customer_path(customer),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{customer.id}" %>
+     <%= link_to '',edit_customer_customer_path(customer),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_customer_customer_#{customer.id}" %>
   <% else %>
     <%= render "customer/relationships/follow", customer: customer %>
   <% end %>
