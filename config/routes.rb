@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/search', to: 'searchs#search'
   #---customer側で指定したいルーティング---
   namespace :customer do
+    get '/search', to: 'searchs#search'
     get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
     patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_customer'
     put 'withdraw/:name' => 'customers#withdraw'

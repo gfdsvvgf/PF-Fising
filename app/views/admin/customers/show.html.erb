@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2><span class="badge badge-secondary"><%= @customer.full_name %>様の会員詳細</span></h2>
+      <h2><span class="badge badge-secondary"><%= @customer.name %>様の会員詳細</span></h2>
       <table class="table table-borderless">
         <tr>
           <th>会員ID</th>
@@ -28,7 +28,7 @@
         <tr>
           <th></th>
           <td><%= link_to "編集する", edit_admin_customer_path(@customer), class:"btn btn-success" %></td>
-          <td><%= link_to "投稿履歴一覧へ", admin_items_path, class:"btn btn-primary" %></td>
+          <td><%= link_to "投稿履歴一覧へ", admin_todolists_path, class:"btn btn-primary" %></td>
         </tr>
       </table>
     </div>

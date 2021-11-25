@@ -24,9 +24,11 @@
           </thead>
           <tbody>
             <% @lists.each do |list| %>
-            <td><%= list.title %></td>
-            <td><%= list.genre.name %></td>
-            <td><%= list.body %></td>
+              <tr>
+                <td><%= list.title %></td>
+                <td><%= list.genre.name %></td>
+                <td><%= list.body %></td>
+              </tr>
             <% end %>
           </tbody>
       </table>

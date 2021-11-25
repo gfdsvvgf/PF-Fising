@@ -1,7 +1,9 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-
+      <h2>User info</h2>
+      <%# binding.irb %>
+      <%= render 'customer/customers/info', customer: @customer %>
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>投稿詳細</h2>
@@ -34,7 +36,7 @@
         <% end %>
 
         <div class="bottomInput">
-          <%= form_with(model: [@list, @comment], url:customer_todolist_post_comments_path ,id: "new-comment") do |f| %>
+          <%= form_with(model: [@list, @comment], url:customer_todolist_post_comments_path(@list.id),id: "new-comment") do |f| %>
             <%= f.text_area :comment, class: "inputComment" %>
             <%= f.submit "コメントする", class: "submitComment" %>
           <% end %>

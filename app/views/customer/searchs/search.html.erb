@@ -1,7 +1,7 @@
-<% if @model == 'user' %>
+<% if @model == 'customer' %>
   <h3> Users search for "<%= @content %>"</h3>
-  <%= render 'customers/index', customers: @records %>
-<% else @model == 'lis' %>
-  <h3> Books search for "<%= @content %>"</h3>
-    <%= render 'todolists/index', lists: @records %>
+  <%= render 'customer/customers/index', customers: @records %>
+<% else @model == 'list' %>
+  <h3> lists search for "<%= @content %>"</h3>
+    <%= render 'customer/todolists/index', lists: @records %>
 <% end %>

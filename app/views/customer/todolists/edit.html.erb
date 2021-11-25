@@ -4,6 +4,6 @@
   		<h1>投稿編集</h1>
     	<%= render 'layouts/errors', obj: @list %>
   		<%= render 'form', list: @list %>
-  		<%= link_to 'Show', list_path(@list), class: "list_#{@list.id}" %> |
-  		<%= link_to 'Back', lists_path, class: "back" %>
+  		<%= link_to 'Show', customer_todolist_path(@list), class: "list_#{@list.id}" %> |
+  		<%= link_to 'Back', customer_todolists_path, class: "back" %>
   </div>

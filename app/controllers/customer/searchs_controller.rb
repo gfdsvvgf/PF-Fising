@@ -7,19 +7,19 @@ class Customer::SearchsController < ApplicationController
   end
 
   private
-  
+
   def search_for(model, content, method)
     if model == 'customer'
       if method == 'perfect'
-        User.where(name: content)
+        Customer.where(name: content)
       else
-        User.where('name LIKE ?', '%'+content+'%')
+        Customer.where('name LIKE ?', '%'+content+'%')
       end
     elsif model == 'list'
       if method == 'perfect'
-        Book.where(title: content)
+        List.where(title: content)
       else
-        Book.where('title LIKE ?', '%'+content+'%')
+        List.where('title LIKE ?', '%'+content+'%')
       end
     end
   end

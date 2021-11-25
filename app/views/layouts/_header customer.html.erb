@@ -14,7 +14,7 @@
             さん!
           </div>
           <!--userがログイン状態の場合-->
-          <li><i class="fas fa-user" style= "color:gray;"></i><%= link_to 'マイページ　' , customer_customers_path(current_customer), style:"color:gray;"%></li>
+          <li><i class="fas fa-user" style= "color:gray;"></i><%= link_to 'マイページ　' , customer_customer_path(current_customer), style:"color:gray;"%></li>
 
           <li><i class="fas fa-list" style= "color:gray;"></i><%= link_to ' 投稿一覧　' , customer_todolists_path, style:"color:gray;" %></li>
 

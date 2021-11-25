@@ -49,7 +49,7 @@ class Admin::TodolistsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :introduction, :image, :genre_id, :is_active)
+    params.require(:list).permit(:name, :introduction, :image_id, :genre_id, :is_active)
   end
 
 

@@ -8,9 +8,12 @@ class Customer::TodolistsController < ApplicationController
   end
 
   def edit
-　  @list = List.find(params[:id])
-　  if @list.customer.id != current_customer.id
-    redirect_to customer_todolists_path
+    @list = List.find(params[:id])
+    pp current_customer
+    pp @list
+    if @list.customer.id != current_customer.id
+      redirect_to customer_todolists_path
+    end
   end
 
   def show

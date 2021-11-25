@@ -4,19 +4,19 @@
   </div>
   <div class="row">
     <div class="col offset-2">
-      <%= form_with model: @list, url:admin_list_path, local:true do |f| %>
+      <%= form_with model: @list, url:admin_todolist_path, local:true do |f| %>
         <table class="table table-borderless">
           <tbody>
             <tr class="mb-3">
-              <td class="text-center "><%= f.label :image, "投稿画像" %></td>
+              <td class="text-center "><%= f.label :image_id, "投稿画像" %></td>
               <td><%= f.attachment_field :image %></td>
             </tr>
             <tr class="mb-3">
-              <td class="text-center"><%= f.label :name, "題名" %></td>
+              <td class="text-center"><%= f.label :title, "題名" %></td>
               <td><%= f.text_field :name, size: 30, placeholder: "題名" %></td>
             </tr>
             <tr class="mb-3">
-              <td class="text-center"><%= f.label :introduction, "投稿詳細" %></td>
+              <td class="text-center"><%= f.label :body, "投稿詳細" %></td>
               <td><%= f.text_area :introduction, placeholder: "ここに説明文を記述します" %></td>
             </tr>
             <tr class="mb-3">

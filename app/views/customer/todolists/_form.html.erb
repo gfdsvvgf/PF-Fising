@@ -1,6 +1,5 @@
 <%# 投稿の部分テンプレート　%>
 <%= form_with model:list,url:customer_todolists_path, local:true do |f| %>
-
   <div class="form-group">
     <%= f.label :画像 %><br />
     <%= f.file_field :image_id, class: "image" %>

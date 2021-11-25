@@ -19,5 +19,6 @@
 
  body {
  // background-image: image-url("hoge.jpg");
-
+    background: url(amazing.jpg) center top no-repeat;
+    background-size: cover;
  }

@@ -8,24 +8,24 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="list_image col-4">
-      <%= attachment_image_tag @list, :image, format: 'jpeg', fallback: "no_image.jpg",size:"300x200" %>
+      <%= attachment_image_tag @list, :image_id, format: 'jpeg', fallback: "no_image.jpg",size:"200x200" %>
     </div>
 
     <div class="col-6 mt-4">
       <div class="row">
         <p class="col-3">題名</p>
-        <p class="col-3 fs-5"><%=@list.name %></p>
+        <p class="col-3 fs-5"><%=@list.title %></p>
       </div>
       <div class="row">
         <p class="col-3">投稿詳細</p>
-        <p class="col-3 fs-5"><%= @list.introduction %></p>
+        <p class="col-3 fs-5"><%= @list.body %></p>
       </div>
       <div class="row">
         <p class="col-3">ジャンル</p>
         <p class="col-3 fs-5"><%= @list.genre.name %></p>
       </div>
       <div class="row position-relative mt-4">
-      <%= link_to "編集する", edit_admin_item_path(@item),class:"btn btn-outline-dark col-2 position-absolute top-50 start-50 translate-middle"%>
+      <%= link_to "編集する", edit_admin_todolist_path(@list),class:"btn btn-outline-dark col-2 position-absolute top-50 start-50 translate-middle"%>
       </div>
 
     </div>
