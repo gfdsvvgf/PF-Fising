@@ -43,13 +43,12 @@ class Customer::TodolistsController < ApplicationController
     @list = List.new(list_params)
     @list.customer_id = current_customer.id
     # データをデータベースに保存するため
-
-    if @list.save!
+    if @list.save
      redirect_to customer_todolist_path(@list.id), notice: "You have created list successfully."
     else
       @lists = List.all
       @customer = current_customer
-      render 'index'
+      render 'customer/customers/show'
     end
   end
 

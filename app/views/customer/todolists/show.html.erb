@@ -8,10 +8,14 @@
     <div class='col-md-8 offset-md-1'>
   		<h2>投稿詳細</h2>
   		<table class='table'>
+  		  <%= render 'layouts/errors', obj: @comment %>
   		  <tr>
   		    <td><%= link_to customer_customer_path(@list.customer) do %>
-            <%= attachment_image_tag(@list.customer, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %><br>
+            <%= attachment_image_tag(@list.customer, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+          </td>
+          <td>
             <%= @list.customer.name %>
+          </td>  
             <% end %>
           </td>
           <td><%= link_to @list.title, customer_todolist_path(@list) %></td>
