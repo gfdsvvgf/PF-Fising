@@ -62,7 +62,7 @@ class Customer::TodolistsController < ApplicationController
   private
   # ストロングパラメータの設定
   def list_params
-    params.require(:list).permit(:title, :body, :image_id,:genre_id)
+    params.require(:list).permit(:title, :body, :image,:genre_id)
   end
 
 end
