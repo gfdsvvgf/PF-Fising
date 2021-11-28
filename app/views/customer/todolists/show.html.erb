@@ -19,6 +19,7 @@
             <% end %>
           </td>
           <td><%= link_to @list.title, customer_todolist_path(@list) %></td>
+          <td><%= @list.genre.name %></td>
           <td><%= @list.body %></td>
           <td id="favorite_buttons_<%= @list.id %>">
             <%= render "customer/favorites/favorites", list: @list %>
