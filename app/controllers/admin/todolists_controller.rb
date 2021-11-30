@@ -41,7 +41,7 @@ class Admin::TodolistsController < ApplicationController
   end
 
   def destroy
-    @list = L.find(params[:id])
+    @list = List.find(params[:id])
     @list.destroy
     redirect_to admin_todolists_path
   end
@@ -49,7 +49,7 @@ class Admin::TodolistsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :introduction, :image_id, :genre_id, :is_active)
+    params.require(:list).permit(:title, :body, :image_id, :genre_id, :is_active)
   end
 
 
